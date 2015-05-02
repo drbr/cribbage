@@ -9,3 +9,6 @@ This program allows a player to input their six cards, and it will compute the e
 
 ## How to use
 This is a self-contained web application written in JavaScript, using freely-available frameworks and libraries. Simply download the source, then open index.html in a browser.
+
+## Running tests
+The tests use the Mocha test runner, which runs in the browser. Simply open tests.html, and the tests will run.
