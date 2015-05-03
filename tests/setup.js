@@ -1,0 +1,20 @@
+var expect = chai.expect;
+
+var AceOfClubs = { rank: "A", suit: "C" };
+var TwoOfHearts = { rank: "2", suit: "H" };
+var ThreeOfSpades = { rank: "3", suit: "S" };
+var FiveOfClubs = { rank: "5", suit: "C" };
+var SixOfSpades = { rank: "6", suit: "S" };
+var SixOfHearts = { rank: "6", suit: "H" };
+var SixOfDiamonds = { rank: "6", suit: "D" };
+var SevenOfDiamonds = { rank: "7", suit: "D" };
+var SevenOfClubs = { rank: "7", suit: "C" };
+var EightOfClubs = { rank: "8", suit: "C"};
+var EightOfDiamonds = { rank: "8", suit: "D" };
+var NineOfHearts = { rank: "9", suit: "H" };
+var NineOfSpades = { rank: "9", suit: "S" };
+var JackOfHearts = { rank: "J", suit: "H" };
+var JackOfSpades = { rank: "J", suit: "S" };
+var QueenOfSpades = { rank: "Q", suit: "S" };
+var KingOfSpades = { rank: "K", suit: "S" };
+var KingOfDiamonds = { rank: "K", suit: "D" };

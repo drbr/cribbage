@@ -7,10 +7,12 @@
   }
 
   // 3rd party runtime dependencies
-  load('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js');
-  load('https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js');
+  //load('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js');
+  //load('https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js');
 
   // Local application code
   load('src/logic.js');
+  load('src/cards.js');
+  load('src/scoring.js');
 
 })();
