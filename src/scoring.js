@@ -21,7 +21,22 @@ var Scoring = (function(Scoring) {
   };
 
   Scoring.scorePairs = function(sortedHand) {
-    return 0;
+    var instances = 1;
+    var pairs = 0;
+    sortedHand = sortedHand.map(function(card) {
+      return card.rank;
+    });
+
+    for (var index = 1; index < sortedHand.length; index++) {
+      if (sortedHand[index] === sortedHand[index-1]) {
+        pairs += instances;
+        instances++;
+      } else {
+        instances = 1;
+      }
+    }
+
+    return pairs * 2;
   };
 
   Scoring.scoreRuns = function(sortedHand) {

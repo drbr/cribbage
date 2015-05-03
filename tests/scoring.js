@@ -6,6 +6,66 @@ describe("Scoring", function() {
     });
   }
 
+  describe("scorePairs", function() {
+    function expectPoints(sortedHand, points) {
+      expect(Scoring.scorePairs(makeCards(sortedHand))).to.equal(points);
+    }
+
+    it("should award zero points when there are no pairs", function() {
+      var sortedHand = ["3", "5", "6", "7", "K"];
+      expectPoints(sortedHand, 0);
+    });
+
+    it("should award two points for one pair", function() {
+      var sortedHand = ["3", "5", "6", "6", "K"];
+      expectPoints(sortedHand, 2);
+     
+      sortedHand = ["A", "A", "3", "5", "K"];
+      expectPoints(sortedHand, 2);
+     
+      sortedHand = ["A", "2", "3", "K", "K"];
+      expectPoints(sortedHand, 2);
+    });
+
+    it("should award four points for two pairs", function() {
+      var sortedHand = ["5", "5", "6", "6", "7"];
+      expectPoints(sortedHand, 4);
+     
+      sortedHand = ["A", "A", "Q", "K", "K"];
+      expectPoints(sortedHand, 4);
+     
+      sortedHand = ["9", "10", "10", "J", "J"];
+      expectPoints(sortedHand, 4);
+    });
+
+    it("should award six points for a set of three ", function() {
+      var sortedHand = ["3", "3", "3", "7", "K"];
+      expectPoints(sortedHand, 6);
+
+      sortedHand = ["A", "3", "3", "3", "K"];
+      expectPoints(sortedHand, 6);
+
+      sortedHand = ["A", "3", "8", "8", "8"];
+      expectPoints(sortedHand, 6);
+    });
+
+    it("should award eight points for a set of two and a set of three", function() {
+      var sortedHand = ["3", "3", "3", "7", "7"];
+      expectPoints(sortedHand, 8);
+
+      sortedHand = ["3", "3", "7", "7", "7"];
+      expectPoints(sortedHand, 8);
+    });
+
+    it("should award twelve points for a set of four", function() {
+      var sortedHand = ["Q", "Q", "Q", "Q", "K"];
+      expectPoints(sortedHand, 12);
+
+      sortedHand = ["J", "Q", "Q", "Q", "Q"];
+      expectPoints(sortedHand, 12);
+    });
+  });
+
   describe("scoreRuns", function() {
 
     function expectPoints(sortedHand, points) {
