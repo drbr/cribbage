@@ -7,6 +7,8 @@ At the beginning of each hand, each player is dealt six cards. The player must c
 
 This program allows a player to input their six cards, and it will compute the expected value for each combination of four cards therein, based on the probability of any specific starter card appearing.
 
+NOTE: The program is a work in progress, and so far will only score a given hand.
+
 ## How to use
 This is a self-contained web application written in JavaScript, using freely-available frameworks and libraries. Simply download the source, then open index.html in a browser.
 
