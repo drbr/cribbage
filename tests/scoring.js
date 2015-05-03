@@ -251,4 +251,37 @@ describe("Scoring", function() {
       expect(Scoring.scoreHisNobs(hand, starter)).to.equal(0);
     }); 
   });
+
+  describe("scoreHand", function() {
+
+    it("should combine all the elements into the total score for a hand", function() {
+      var cards = [JackOfSpades, SixOfSpades, JackOfHearts, FiveOfClubs];
+      var starter = SevenOfDiamonds;
+      expect(Scoring.scoreHand(cards, starter)).to.equal(9);
+
+      cards = [AceOfClubs, TwoOfClubs, ThreeOfSpades, TwoOfHearts];
+      starter = TwoOfDiamonds;
+      expect(Scoring.scoreHand(cards, starter)).to.equal(15);
+
+      cards = [JackOfSpades, FiveOfClubs, KingOfDiamonds, FiveOfHearts];
+      starter = QueenOfSpades;
+      expect(Scoring.scoreHand(cards, starter)).to.equal(18);
+
+      cards = [FiveOfSpades, FiveOfClubs, JackOfHearts, FiveOfDiamonds];
+      starter = FiveOfHearts;
+      expect(Scoring.scoreHand(cards, starter)).to.equal(29);
+
+      cards = [EightOfDiamonds, SevenOfDiamonds, SixOfSpades, SixOfHearts];
+      starter = SevenOfClubs;
+      expect(Scoring.scoreHand(cards, starter)).to.equal(20);
+
+      cards = [NineOfHearts, AceOfClubs, TwoOfDiamonds, QueenOfSpades];
+      starter = FiveOfDiamonds;
+      expect(Scoring.scoreHand(cards, starter)).to.equal(4);
+
+      cards = [TenOfClubs, AceOfClubs, TwoOfDiamonds, QueenOfSpades];
+      starter = SixOfDiamonds;
+      expect(Scoring.scoreHand(cards, starter)).to.equal(0);
+    });
+  });
 });
