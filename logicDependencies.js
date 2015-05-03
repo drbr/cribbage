@@ -7,8 +7,8 @@
     document.write('<script src="' + url + '"></script>');
   }
 
-  load('src/cards.js');
-  load('src/logic.js');
-  load('src/scoring.js');
+  load('src/logic/cards.js');
+  load('src/logic/logic.js');
+  load('src/logic/scoring.js');
 
 })();
