@@ -13,8 +13,11 @@
 
   // 3rd party dependencies
   loadScript('https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js');
+  loadScript('https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js');
   loadScript('https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js');
   loadScript('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js');
   loadStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css');
 
+  // The web app
+  loadScript('src/app/app.js');
 })();

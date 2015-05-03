@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="CribbageApp">
 <head>
   <title>Cribbage Solver</title>
 
@@ -7,22 +7,23 @@
   <script src="logicDependencies.js"></script>
   <script src="presentationDependencies.js"></script>
 </head>
-<body>
+<body ng-controller="CribbageCtrl">
   <div class="container-fluid">
 
   <h1>Cribbage Solver!</h1>
 
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-    <h5 class="navbar-textx">Choose an activity:</h5>
+    <h5>Choose an activity:</h5>
     <ul class="nav navbar-nav">
-      <li><a href="#">Score a hand</a></li>
-      <li class="disabled"><a href="#">Evaluate dealt cards</a></li>
+      <li ng-repeat="tab in activityTabs" ng-class="{disabled: !tab.enabled}">
+        <a ng-href="{{tab.enabled ? '#' + tab.name : ''}}">{{tab.string}}</a>
+      </li>
     </ul>
     </div>
   </nav>
 
-  <div class="cribbage-pane"></div>
+  <div ng-view></div>
 
   </div>
 </body>
