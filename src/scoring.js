@@ -70,8 +70,32 @@ var Scoring = (function(Scoring) {
     return (longestRun >= 3) ? longestRun * multiplier * accumulator : 0;
   };
 
-  Scoring.scoreFifteens = function(sortedHand) {
-    return 0;
+  Scoring.scoreFifteens = function(hand) {
+    // Returns the number of subsets of pointValues that add up exactly to sum.
+    // pointTotal is the sum of all the pointValues.
+    function subsetsAddingTo(sum, pointValues, pointTotal) {
+      if (pointValues.length == 0 || sum <= 0 || pointTotal < sum) {
+        return 0;
+      }
+
+      var firstElementIsSum = (pointValues[0] == sum);
+
+      var subArray = pointValues.slice(1);
+      var subArrayTotal = pointTotal - pointValues[0];
+
+      var subsetFull = subsetsAddingTo(sum, subArray, subArrayTotal);
+      var subsetPartial = firstElementIsSum ? 1
+          : subsetsAddingTo(sum - pointValues[0], subArray, subArrayTotal);
+      return subsetFull + subsetPartial;
+    }
+
+    var pointValues = hand.map(function(card) {
+      return Cards.getPointRank(card);
+    });
+    var pointTotal = pointValues.reduce(function(total, value) {
+      return total + value;
+    });
+    return subsetsAddingTo(15, pointValues, pointTotal) * 2;
   };
 
   Scoring.scoreFlush = function(cards, starter) {

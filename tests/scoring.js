@@ -7,6 +7,7 @@ describe("Scoring", function() {
   }
 
   describe("scorePairs", function() {
+
     function expectPoints(sortedHand, points) {
       expect(Scoring.scorePairs(makeCards(sortedHand))).to.equal(points);
     }
@@ -138,6 +139,48 @@ describe("Scoring", function() {
 
       sortedHand = ["3", "4", "5", "5", "5"];
       expectPoints(sortedHand, 9);
+    });
+  });
+
+  describe("scoreFifteens", function() {
+
+    function expectPoints(hand, points) {
+      expect(Scoring.scoreFifteens(makeCards(hand))).to.equal(points);
+    }
+
+    it("should award zero points when nothing adds to 15", function() {
+      var hand = ["3", "4", "7", "9", "Q"];
+      expectPoints(hand, 0);
+    });
+
+    it("should award two points for one 15", function() {
+      var hand = ["A", "6", "7", "9", "Q"];
+      expectPoints(hand, 2);
+
+      hand = ["4", "4", "7", "9", "Q"];
+      expectPoints(hand, 2);
+
+      hand = ["2", "2", "7", "2", "2"];
+      expectPoints(hand, 2);
+    });
+
+    it("should award four points for two 15s", function() {
+      var hand = ["5", "6", "7", "9", "Q"];
+      expectPoints(hand, 4);
+
+      hand = ["5", "6", "7", "J", "Q"];
+      expectPoints(hand, 4);
+    });
+
+    it("awards the appropriate number of points when there are many combinations", function() {
+      var hand = ["5", "5", "5", "5", "10"];
+      expectPoints(hand, 16);
+
+      hand = ["5", "5", "5", "10", "J"];
+      expectPoints(hand, 14);
+
+      hand = ["6", "7", "8", "9", "A"];
+      expectPoints(hand, 6);
     });
   });
 
