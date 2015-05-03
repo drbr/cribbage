@@ -19,5 +19,6 @@
   loadStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css');
 
   // The web app
-  loadScript('src/app/app.js');
+  loadScript('src/app/angular/app.js');
+  loadScript('src/app/angular/directives.js');
 })();
