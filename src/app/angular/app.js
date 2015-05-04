@@ -1,6 +1,7 @@
 var cribbageApp = angular.module('CribbageApp', [
   'ui.router',
-  'crDirectives']);
+  'crDirectives',
+  'crFilters']);
 
 var activityTabs = [
   { name: 'scoreHand', string: 'Score a hand', enabled: true },
@@ -25,19 +26,16 @@ cribbageApp.controller('CribbageCtrl', function($scope) {
 });
 
 cribbageApp.controller('scoreHandCtrl', function($scope) {
-  var ThreeOfSpades = { rank: "3", suit: "S" };
-  var FiveOfSpades = { rank: "5", suit: "S" };
-  var NineOfHearts = { rank: "9", suit: "H" };
-  var NineOfSpades = { rank: "9", suit: "S" };
-  var JackOfHearts = { rank: "J", suit: "H" };
-
-  $scope.cards = [FiveOfSpades, JackOfHearts, ThreeOfSpades, NineOfSpades];
-  $scope.starter = NineOfHearts;
+  $scope.hand = {
+    // The card selectors will populate these objects when a card is selected
+    cards: [{}, {}, {}, {}],
+    starter: {}
+  }
 });
 
 cribbageApp.controller('evaluateDealCtrl', function($scope) {});
 
 // Access the cribbage logic through this service, to avoid global references
 cribbageApp.factory('LogicProvider', function() {
-  return { scoring: Scoring };
+  return { scoring: Scoring, cards: Cards };
 });

@@ -21,4 +21,7 @@
   // The web app
   loadScript('src/app/angular/app.js');
   loadScript('src/app/angular/directives.js');
+  loadScript('src/app/angular/filters.js');
+
+  loadStylesheet('src/app/cribbage.css');
 })();

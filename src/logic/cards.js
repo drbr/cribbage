@@ -28,7 +28,15 @@ var Cards = (function(Cards) {
   };
 
   Cards.toString = function(card) {
-    return [rankValues[card.rank], ' of ', suitValues[card.suit]].join('');
+    if (Cards.isValid(card)) {
+      return [rankValues[card.rank].string, ' of ', suitValues[card.suit].string].join('');
+    } else {
+      return '';
+    }
+  }
+
+  Cards.isValid = function(card) {
+    return (rankValues[card.rank] && suitValues[card.suit]) ? true : false;
   }
 
   Cards.cardRankComparator = function(cardA, cardB) {

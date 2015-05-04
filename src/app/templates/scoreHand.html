@@ -1,3 +1,14 @@
-<p>Scoring a hand</p>
+<div class="panel panel-default">
+  <div class="panel-heading">Select four cards:</div>
+  <div class="panel-body">
+    <p ng-repeat="card in hand.cards">
+      <cr:card-selector card="hand.cards[$index]"></cr:card-selector>{{ hand.cards[$index] | cardToString }}
+    </p>
+  </div>
+  <div class="panel-heading">Select the starter:</div>
+  <div class="panel-body">
+    <cr:card-selector card="hand.starter"></cr:card-selector>{{ hand.starter | cardToString }}
+  </div>
+</div>
 
-<cr:hand-score cards="cards" starter="starter"></cr:hand-score>
+<cr:hand-score cards="hand.cards" starter="hand.starter"></cr:hand-score>
