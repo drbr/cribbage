@@ -10,20 +10,24 @@
 <body ng-controller="CribbageCtrl">
   <div class="container-fluid">
 
-  <h1>Cribbage Solver!</h1>
+    <h1>Cribbage Solver!</h1>
 
-  <nav class="navbar navbar-default">
     <div class="container-fluid">
-    <h5>Choose an activity:</h5>
-    <ul class="nav navbar-nav">
-      <li ng-repeat="tab in activityTabs" ng-class="{disabled: !tab.enabled}">
-        <a ng-href="{{tab.enabled ? '#' + tab.name : ''}}">{{tab.string}}</a>
-      </li>
-    </ul>
-    </div>
-  </nav>
+      <nav class="navbar">
+      <h5>Choose an activity:</h5>
+      <ul class="nav nav-tabs">
+        <li>&nbsp;&nbsp;&nbsp;</li>
+        <li ng-repeat="tab in activityTabs" ui-sref-active="active"
+            ng-class="{disabled: !tab.enabled}">
+          <a ng-if="tab.enabled" ui-sref="{{tab.name}}">{{tab.string}}</a>
+          <a ng-if="!tab.enabled">{{tab.string}}</a>
+        </li>
+      </ul>
+      </nav>
 
-  <div ng-view></div>
+      <div ui-view></div>
+
+    </div>
 
   </div>
 </body>

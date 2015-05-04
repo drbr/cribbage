@@ -1,20 +1,23 @@
 var cribbageApp = angular.module('CribbageApp', [
-  'ngRoute',
+  'ui.router',
   'crDirectives']);
 
 var activityTabs = [
-    { name: 'scoreHand', string: 'Score a hand', enabled: true },
-    { name: 'evaluateDeal', string: 'Evaluate dealt cards', enabled: false }
-  ];
+  { name: 'scoreHand', string: 'Score a hand', enabled: true },
+  { name: 'evaluateDeal', string: 'Evaluate dealt cards', enabled: false }
+];
 
-cribbageApp.config(['$routeProvider',
-  function($routeProvider) {
+cribbageApp.config(['$stateProvider', '$urlRouterProvider',
+  function($stateProvider, $urlRouterProvider) {
     activityTabs.forEach(function(tab) {
-      $routeProvider.when('/' + tab.name, {
+      $stateProvider.state(tab.name, {
+        url: '/' + tab.name,
         templateUrl: 'src/app/templates/' + tab.name + '.html',
         controller: tab.name + 'Ctrl'
       });
     });
+
+    $urlRouterProvider.otherwise('/');
   }]);
 
 cribbageApp.controller('CribbageCtrl', function($scope) {
