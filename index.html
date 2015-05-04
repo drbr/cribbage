@@ -17,10 +17,8 @@
       <h5>Choose an activity:</h5>
       <ul class="nav nav-tabs">
         <li>&nbsp;&nbsp;&nbsp;</li>
-        <li ng-repeat="tab in activityTabs" ui-sref-active="active"
-            ng-class="{disabled: !tab.enabled}">
+        <li ng-repeat="tab in activityTabs" ui-sref-active="active">
           <a ng-if="tab.enabled" ui-sref="{{tab.name}}">{{tab.string}}</a>
-          <a ng-if="!tab.enabled">{{tab.string}}</a>
         </li>
       </ul>
       </nav>

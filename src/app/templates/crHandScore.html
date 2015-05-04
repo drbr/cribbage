@@ -1,0 +1,6 @@
+<p ng-if="!error() && validHand()">The score for this hand is {{ getScore() }}.</p>
+
+<p ng-if="!error() && !validHand()" class="text-warning">
+  Enter a hand to compute its score.</p>
+
+<p ng-if="error()" class="text-danger">{{ error() }}</p>

@@ -7,4 +7,5 @@
 <button ng-click="setSuit('D')" ng-class="{active:suit == 'D'}"
   class="btn btn-default cr-suit-btn red">&diams;</button>
 
-<input type="text" ng-model="rank" ng-change="updateCard()" />
+<input type="text" ng-model="rank" ng-change="updateCard()" tabindex="{{tabindex}}"/>
+{{ card | cardToString }}

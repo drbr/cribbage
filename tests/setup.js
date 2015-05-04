@@ -22,5 +22,6 @@ var TenOfClubs = { rank: "10", suit: "C" };
 var JackOfHearts = { rank: "J", suit: "H" };
 var JackOfSpades = { rank: "J", suit: "S" };
 var QueenOfSpades = { rank: "Q", suit: "S" };
+var KingOfClubs = { rank: "K", suit: "C" };
 var KingOfSpades = { rank: "K", suit: "S" };
 var KingOfDiamonds = { rank: "K", suit: "D" };

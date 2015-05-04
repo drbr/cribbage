@@ -7,17 +7,9 @@ var Scoring = (function(Scoring) {
   Scoring.scoreHand = function(cards, starter) {
     var score = 0;
 
-    // Before we start, make sure there are five valid cards
-    var hand = cards.concat(starter);
-    var validHand = (hand.length === 5 && hand.every(function(card) {
-      return Cards.isValid(card);
-    }));
-    if (!validHand) {
-      return undefined;
-    }
-
     // Sort the 5 cards to make everything else easier
-    hand = hand.sort(Cards.cardRankComparator);
+    var hand = cards.concat(starter)
+      .sort(Cards.cardRankComparator);
 
     score += Scoring.scorePairs(hand);
     score += Scoring.scoreRuns(hand);

@@ -36,6 +36,7 @@ var Cards = (function(Cards) {
   }
 
   Cards.isValid = function(card) {
+    if (!card) return false;
     return (rankValues[card.rank] && suitValues[card.suit]) ? true : false;
   }
 
