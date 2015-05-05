@@ -58,7 +58,7 @@ directives.directive('crCardSelector', ['LogicProvider', function(logicProvider)
 
       scope.updateCard = function() {
         scope.card.suit = scope.suit;
-        scope.card.rank = scope.rank;
+        scope.card.rank = scope.rank.toUpperCase();
       };
 
     }
