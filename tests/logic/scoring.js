@@ -92,6 +92,9 @@ describe("Scoring", function() {
     it("should award three points for a run of three", function() {
       var sortedHand = ["3", "6", "7", "8", "Q"];
       expectPoints(sortedHand, 3);
+
+      sortedHand = ["3", "4", "5", "8", "8"];
+      expectPoints(sortedHand, 3);
     });
 
     it("should award three points for a run of two and a run of three", function() {
