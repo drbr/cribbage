@@ -1,17 +1,17 @@
-var Logic = (function(Logic) {
+var Hands = (function(Hands) {
 
   // Returns a boolean indicating whether or not the given cards comprise
   // a valid cribbage hand.
-  Logic.validHand = function(cards, starter) {
+  Hands.validHand = function(cards, starter) {
     var validHand = (cards.length === 4 && cards.every(function(card) {
       return Cards.isValid(card);
     }));
 
     validHand = validHand && Cards.isValid(starter);
-    return validHand && Logic.findDuplicates(cards.concat(starter)).length == 0;
+    return validHand && Hands.findDuplicates(cards.concat(starter)).length == 0;
   };
 
-  Logic.findDuplicates = function(cards) {
+  Hands.findDuplicates = function(cards) {
     var cardMap = {};
     var duplicateMap = {};
     var duplicateArray = [];
@@ -30,5 +30,5 @@ var Logic = (function(Logic) {
     return duplicateArray;
   };
 
-  return Logic;
-})(Logic || {});
+  return Hands;
+})(Hands || {});

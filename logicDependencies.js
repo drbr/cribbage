@@ -8,7 +8,7 @@
   }
 
   load('src/logic/cards.js');
-  load('src/logic/logic.js');
+  load('src/logic/hands.js');
   load('src/logic/scoring.js');
 
 })();

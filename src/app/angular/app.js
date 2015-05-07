@@ -37,5 +37,5 @@ cribbageApp.controller('evaluateDealCtrl', function($scope) {});
 
 // Access the cribbage logic through this service, to avoid global references
 cribbageApp.factory('LogicProvider', function() {
-  return { scoring: Scoring, cards: Cards, logic: Logic };
+  return { scoring: Scoring, cards: Cards, hands: Hands };
 });
