@@ -68,4 +68,27 @@ describe("Hands", function() {
       expect(Hands.validHand(cards, SixOfHearts)).to.be.true;
     });
   });
+
+  describe("generateDeck", function() {
+    
+    var deck;
+
+    beforeEach(function() {
+      deck = Hands.generateDeck();
+    });
+
+    it("should generate 52 cards", function() {
+      expect(deck.length).to.equal(52);
+    });
+
+    it("the cards should be in ascending sorted order", function() {
+      expect(deck[0]).to.eql(AceOfClubs);
+      expect(deck[1]).to.eql(AceOfSpades);
+      expect(deck[2]).to.eql(AceOfHearts);
+      expect(deck[3]).to.eql(AceOfDiamonds);
+      expect(deck[6]).to.eql(TwoOfHearts);
+      expect(deck[45]).to.eql(QueenOfSpades);
+      expect(deck[51]).to.eql(KingOfDiamonds);
+    });
+  });
 });

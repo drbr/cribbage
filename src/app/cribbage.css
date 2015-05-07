@@ -6,6 +6,10 @@
     line-height: 40px;
 }
 
-.btn.cr-suit-btn.red {
+.btn.cr-suit-btn > .red {
     color: red;
+}
+
+.btn.cr-suit-btn > .black {
+    color: black;
 }

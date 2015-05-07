@@ -1,11 +1,7 @@
-<button ng-click="setSuit('C')" ng-class="{active:suit == 'C'}"
-  class="btn btn-default cr-suit-btn">&clubs;</button>
-<button ng-click="setSuit('S')" ng-class="{active:suit == 'S'}"
-  class="btn btn-default cr-suit-btn">&spades;</button>
-<button ng-click="setSuit('H')" ng-class="{active:suit == 'H'}"
-  class="btn btn-default cr-suit-btn red">&hearts;</button>
-<button ng-click="setSuit('D')" ng-class="{active:suit == 'D'}"
-  class="btn btn-default cr-suit-btn red">&diams;</button>
+<div ng-repeat="s in suitOrder" ng-click="setSuit(s)" class="btn btn-default cr-suit-btn"
+  ng-class="{active: suit == s}"><span ng-class="suitColor(s)">{{ suitSymbol(s) }}</span></div>
 
-<input type="text" ng-model="rank" ng-change="updateCard()" tabindex="{{tabindex}}"/>
+<div ng-repeat="r in rankOrder" ng-click="setRank(r)" class="btn btn-default cr-suit-btn"
+  ng-class="{active: rank == r}">{{ r }}</div>
+
 {{ card | cardToString }}

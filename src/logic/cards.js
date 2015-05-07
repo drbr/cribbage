@@ -21,10 +21,21 @@ var Cards = (function(Cards) {
   };
 
   var suitValues = {
-    C: { string: 'Clubs' },
-    H: { string: 'Hearts' },
-    S: { string: 'Spades' },
-    D: { string: 'Diamonds' }
+    C: { string: 'Clubs', symbol: '\u2663', color: 'black' },
+    S: { string: 'Spades', symbol: '\u2660', color: 'black' },
+    H: { string: 'Hearts', symbol: '\u2665', color: 'red' },
+    D: { string: 'Diamonds', symbol: '\u2666', color: 'red' }
+  };
+
+  Cards.rankOrder = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  Cards.suitOrder = ['C', 'S', 'H', 'D'];
+
+  Cards.suitSymbol = function(suit) {
+    return suitValues[suit].symbol;
+  };
+
+  Cards.suitColor = function(suit) {
+    return suitValues[suit].color;
   };
 
   Cards.toString = function(card) {
@@ -33,12 +44,17 @@ var Cards = (function(Cards) {
     } else {
       return '';
     }
-  }
+  };
+
+  // Returns a unique string identifier for the card
+  Cards.hash = function(card) {
+    return card.rank + card.suit;
+  };
 
   Cards.isValid = function(card) {
     if (!card) return false;
     return (rankValues[card.rank] && suitValues[card.suit]) ? true : false;
-  }
+  };
 
   Cards.cardRankComparator = function(cardA, cardB) {
     return rankValues[cardA.rank].sort - rankValues[cardB.rank].sort;
@@ -46,11 +62,11 @@ var Cards = (function(Cards) {
 
   Cards.getSortRank = function(card) {
     return rankValues[card.rank].sort;
-  }
+  };
 
   Cards.getPointRank = function(card) {
     return rankValues[card.rank].points;
-  }
+  };
 
   return Cards;
 })(Cards || {});

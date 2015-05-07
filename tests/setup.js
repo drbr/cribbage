@@ -1,6 +1,9 @@
 var expect = chai.expect;
 
 var AceOfClubs = { rank: "A", suit: "C" };
+var AceOfSpades = { rank: "A", suit: "S" };
+var AceOfHearts = { rank: "A", suit: "H" };
+var AceOfDiamonds = { rank: "A", suit: "D" };
 var TwoOfHearts = { rank: "2", suit: "H" };
 var TwoOfClubs = { rank: "2", suit: "C" };
 var TwoOfDiamonds = { rank: "2", suit: "D" };

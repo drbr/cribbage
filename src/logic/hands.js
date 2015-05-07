@@ -17,7 +17,7 @@ var Hands = (function(Hands) {
     var duplicateArray = [];
     cards.forEach(function(card) {
       if (Cards.isValid(card)) {
-        var hash = card.rank + card.suit;
+        var hash = Cards.hash(card);
         if (!cardMap[hash]) {
           cardMap[hash] = card;
         } else if (!duplicateMap[hash]) {
@@ -28,6 +28,18 @@ var Hands = (function(Hands) {
     });
 
     return duplicateArray;
+  };
+
+  // Returns a 52-card deck, in sorted ascending order, with the suits
+  // in the order specified by Cards.suitOrder
+  Hands.generateDeck = function() {
+    var deck = [];
+    Cards.rankOrder.forEach(function(rank) {
+      Cards.suitOrder.forEach(function(suit) {
+        deck.push({ suit: suit, rank: rank });
+      });
+    });
+    return deck;
   };
 
   return Hands;
