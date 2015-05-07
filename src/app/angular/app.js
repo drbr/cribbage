@@ -3,6 +3,9 @@ var cribbageApp = angular.module('CribbageApp', [
   'crDirectives',
   'crFilters']);
 
+// The directives, each defined in its own file, are all under this module
+var crDirectives = angular.module('crDirectives', []);
+
 var activityTabs = [
   { name: 'scoreHand', string: 'Score a hand', enabled: true },
   { name: 'evaluateDeal', string: 'Evaluate dealt cards', enabled: false }
