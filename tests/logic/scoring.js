@@ -285,6 +285,10 @@ describe("Scoring", function() {
       cards = [TenOfClubs, AceOfClubs, TwoOfDiamonds, QueenOfSpades];
       starter = SixOfDiamonds;
       expect(Scoring.scoreHand(cards, starter)).to.equal(0);
+
+      cards = [SevenOfDiamonds, SevenOfClubs, AceOfClubs, TwoOfHearts];
+      starter = FiveOfHearts;
+      expect(Scoring.scoreHand(cards, starter)).to.equal(8);
     });
   });
 });
