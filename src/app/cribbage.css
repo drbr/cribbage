@@ -1,3 +1,9 @@
+.cr-card-name {
+    display: inline-block;
+    width: 128px;
+    padding: 6px;
+}
+
 .btn.cr-suit-btn {
     padding: 0px;
     font-size: 28px;

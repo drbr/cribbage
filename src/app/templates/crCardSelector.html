@@ -1,7 +1,11 @@
-<div ng-repeat="s in suitOrder" ng-click="setSuit(s)" class="btn btn-default cr-suit-btn"
-  ng-class="{active: suit == s}"><span ng-class="suitColor(s)">{{ suitSymbol(s) }}</span></div>
+<div class="btn-group" role="group" aria-label="Suit">
+  <div ng-repeat="s in suitOrder" ng-click="setSuit(s)" class="btn btn-default cr-suit-btn"
+    ng-class="{active: suit == s}"><span ng-class="suitColor(s)">{{ suitSymbol(s) }}</span></div>
+</div>
 
-<div ng-repeat="r in rankOrder" ng-click="setRank(r)" class="btn btn-default cr-suit-btn"
-  ng-class="{active: rank == r}">{{ r }}</div>
+<span class="cr-card-name">{{ card | cardToString }}</span>
 
-{{ card | cardToString }}
+<div class="btn-group" role="group" aria-label="Rank">
+  <div ng-repeat="r in rankOrder" ng-click="setRank(r)" class="btn btn-default cr-suit-btn"
+    ng-class="{active: rank == r}">{{ r }}</div>
+</div>
