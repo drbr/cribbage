@@ -1,16 +1,26 @@
 crDirectives.directive('crStarterScores',
-    ['LogicProvider', function(logicProvider) {
+    ['LogicProvider', function(LogicProvider) {
   return {
     restrict: 'E',
     scope: {
       cards: '=',
-      starterScoreMap: '='
+      nonStarters: '='
     },
     templateUrl: 'src/app/templates/crStarterScores.html',
     link: function(scope, element, attrs) {
-      scope.evaluateHand = function() {
-        // Go through each starter and compute the score
+
+      function fourValidCards() {
+        return scope.cards.length === 4 && scope.cards.every(function(card) {
+          return LogicProvider.cards.isValid(card);
+        });
       }
+
+      scope.computeStarterScores = function() {
+        if (fourValidCards()) {
+          return LogicProvider.hands.scoreForEachStarter(scope.cards, scope.nonStarters);
+        }
+      }
+
     }
   };
 

@@ -38,9 +38,8 @@ cribbageApp.controller('scoreHandCtrl', function($scope) {
 
 cribbageApp.controller('evaluateDealCtrl', function($scope) {
   $scope.hand = {
-    // Temporary hand to test things out
-    cards: [{rank: "6", suit: "C"}, {rank: "5", suit: "D"},
-      {rank: "7", suit: "H"}, {rank: "9", suit: "C"}]
+    cards: [{}, {}, {}, {}],
+    nonStarters: []
   }
 });
 
