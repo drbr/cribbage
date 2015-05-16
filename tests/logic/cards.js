@@ -6,6 +6,7 @@ describe("Cards", function() {
       expect(Cards.cardRankComparator(QueenOfSpades, KingOfSpades)).to.be.below(0);
       expect(Cards.cardRankComparator(SevenOfDiamonds, TwoOfHearts)).to.be.above(0);
       expect(Cards.cardRankComparator(KingOfSpades, KingOfDiamonds)).to.equal(0);
+      expect(Cards.cardRankComparator(TenOfClubs, TwoOfHearts)).to.be.above(0);
     });
   });
 
@@ -41,4 +42,60 @@ describe("Cards", function() {
       expect(Cards.isValid({suit:'X', rank:'1'})).to.be.false;
     });
   });
+
+
+  describe("Small functions", function() {
+    it("rankOrder should be in ascending order", function() {
+      expect(_.isEqual(Cards.rankOrder,
+        ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'])).to.be.true;
+    });
+
+    it("toString should return the proper string representation of a card", function() {
+      expect(Cards.toString({rank: 'Q', suit: 'S'})).to.equal('Queen of Spades');
+    });
+
+    it("toString should return the empty string for an invalid card", function() {
+      expect(Cards.toString({foo: 'bar'})).to.equal('');
+    });
+
+    it("toSymbol should return the abbreviated string representation of a card", function() {
+      expect(Cards.toSymbol(QueenOfSpades)).to.equal('Q\u2660');
+    });
+
+    it("toSymbol should return the empty string for an invalid card", function() {
+      expect(Cards.toSymbol({foo: 'bar'})).to.equal('');
+    });
+
+    it("suitSymbol should return the appropriate symbol for a suit", function() {
+      expect(Cards.suitSymbol(QueenOfSpades.suit)).to.equal('\u2660');
+    });
+
+    it("suitColor should return red for red cards", function() {
+      expect(Cards.suitColor(SixOfDiamonds.suit)).to.equal('red');
+      expect(Cards.suitColor(TwoOfHearts.suit)).to.equal('red');
+      });
+
+    it("suitColor should return black for black cards", function() {
+      expect(Cards.suitColor(QueenOfSpades.suit)).to.equal('black');
+      expect(Cards.suitColor(KingOfClubs.suit)).to.equal('black');
+    });
+
+    it("hash should concatenate the rank and suit", function() {
+        expect(Cards.hash(QueenOfSpades)).to.equal('SQ');
+        expect(Cards.hash(TwoOfDiamonds)).to.equal('D2');
+      });
+
+    it("getSortRank should give the sorted integer rank for a card", function() {
+      expect(Cards.getSortRank(QueenOfSpades)).to.equal(12);
+      expect(Cards.getSortRank(SixOfDiamonds)).to.equal(6);
+      expect(Cards.getSortRank(AceOfClubs)).to.equal(1);
+    });
+
+    it("getPointRank should give the number of points for a card", function() {
+      expect(Cards.getPointRank(QueenOfSpades)).to.equal(10);
+      expect(Cards.getPointRank(SixOfDiamonds)).to.equal(6);
+      expect(Cards.getPointRank(AceOfClubs)).to.equal(1);
+    });
+  });
+  
 });

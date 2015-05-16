@@ -46,9 +46,17 @@ var Cards = (function(Cards) {
     }
   };
 
+  Cards.toSymbol = function(card) {
+    if (Cards.isValid(card)) {
+      return card.rank + suitValues[card.suit].symbol;
+    } else {
+      return '';
+    }
+  }
+
   // Returns a unique string identifier for the card
   Cards.hash = function(card) {
-    return card.rank + card.suit;
+    return card.suit + card.rank;
   };
 
   Cards.isValid = function(card) {
