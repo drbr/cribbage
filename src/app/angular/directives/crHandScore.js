@@ -1,5 +1,5 @@
 crDirectives.directive('crHandScore',
-    ['LogicProvider', function(logicProvider) {
+    ['LogicProvider', function(LogicProvider) {
   return {
     restrict: 'E',
     scope: {
@@ -10,14 +10,14 @@ crDirectives.directive('crHandScore',
     link: function(scope, element, attrs) {
 
       scope.getScore = function() {
-        return logicProvider.scoring.scoreHand(scope.cards, scope.starter);
+        return LogicProvider.scoring.scoreHand(scope.cards, scope.starter);
       }
 
       // Returns a string if the cards have not been selected properly,
       // empty string if everything is okay
       scope.error = function() {
         // The only error we currently check for is duplicate cards in the hand
-        var duplicates = logicProvider.hands.findDuplicates(scope.cards.concat(scope.starter));
+        var duplicates = LogicProvider.hands.findDuplicates(scope.cards.concat(scope.starter));
         if (duplicates.length === 0) {
           return '';
         } else {
@@ -26,7 +26,7 @@ crDirectives.directive('crHandScore',
             if (prevCard != null) {
               errorText.push(', ');
             }
-            errorText.push(logicProvider.cards.toString(curCard));
+            errorText.push(LogicProvider.cards.toString(curCard));
             return curCard;
           }, null);
           return errorText.join('');
@@ -34,7 +34,7 @@ crDirectives.directive('crHandScore',
       };
 
       scope.validHand = function() {
-        return logicProvider.hands.validHand(scope.cards, scope.starter);
+        return LogicProvider.hands.validHand(scope.cards, scope.starter);
       };
     }
   };

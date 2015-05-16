@@ -3,9 +3,9 @@
     ng-class="{active: suit == s}"><span ng-class="suitColor(s)">{{ suitSymbol(s) }}</span></div>
 </div>
 
-<span class="cr-card-name">{{ card | cardToString }}</span>
-
 <div class="btn-group" role="group" aria-label="Rank">
   <div ng-repeat="r in rankOrder" ng-click="setRank(r)" class="btn btn-default cr-suit-btn"
     ng-class="{active: rank == r}">{{ r }}</div>
 </div>
+
+<span class="cr-card-name">{{ card | cardToString }}</span>
