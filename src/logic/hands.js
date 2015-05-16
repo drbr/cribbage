@@ -34,13 +34,41 @@ var Hands = (function(Hands) {
   // in the order specified by Cards.suitOrder
   Hands.generateDeck = function() {
     var deck = [];
-    Cards.rankOrder.forEach(function(rank) {
-      Cards.suitOrder.forEach(function(suit) {
-        deck.push({ suit: suit, rank: rank });
-      });
-    });
+    for (var i = 0; i < Cards.rankOrder.length; i++) {
+      for (var j = 0; j < Cards.suitOrder.length; j++) {
+        deck.push({ suit: Cards.suitOrder[j], rank: Cards.rankOrder[i] });
+      }
+    }
     return deck;
   };
+
+  // Takes four cardsInHand, and pairs with every possible starter from the deck.
+  // Does not consider cards present in nonStarters for the starter.
+  // Returns an array of objects in the following form:
+  // { starter: cardObject, score: number }
+  Hands.scoreForEachStarter = function(cards, nonStarters) {
+    var deck = Hands.generateDeck();
+    
+    // Put the known cards into a dictionary for fast lookup
+    var cardsNotInDeck = {};
+    cards.concat(nonStarters).forEach(function(card) {
+      if (card) {
+        cardsNotInDeck[Cards.hash(card)] = true;
+      }
+    });
+
+    var starterScores = [];
+    deck.forEach(function(starter) {
+      if (cardsNotInDeck[Cards.hash(starter)]) {
+        return;
+      }
+
+      var score = Scoring.scoreHand(cards, starter);
+      starterScores.push({ starter: starter, score: score });
+    });
+
+    return starterScores;
+  }
 
   return Hands;
 })(Hands || {});

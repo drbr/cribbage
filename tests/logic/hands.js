@@ -91,4 +91,42 @@ describe("Hands", function() {
       expect(deck[51]).to.eql(KingOfDiamonds);
     });
   });
+
+  it("Chai's \"contains\" assertion compares objects using deep equality", function() {
+    var foo = { a: 'foo', b: 'bar' };
+    var baz = { a: 'foo', b: 'bar' };
+    var fooArray = [foo];
+    expect(foo).to.eql(baz);
+    expect(fooArray).to.contain(baz);
+    expect(fooArray).to.eql([ { a: 'foo', b: 'bar' } ]);
+  });
+
+  describe("scoreForEachStarter", function() {
+    var cards = [TwoOfHearts, FiveOfClubs, TenOfClubs, SixOfSpades];
+
+    it("should deal with null/undefined nonStarters", function() {
+      expect(Hands.scoreForEachStarter(cards)).to.have.length(48);
+      expect(Hands.scoreForEachStarter(cards, null)).to.have.length(48);
+      expect(Hands.scoreForEachStarter(cards, [])).to.have.length(48);
+    });
+
+    it("should not consider cards that are nonStarters", function() {
+      var nonStarters = [JackOfSpades, FiveOfDiamonds];
+      var scoresForEachStarter = Hands.scoreForEachStarter(cards, nonStarters);
+      var startersConsidered = scoresForEachStarter.map(function(obj) {
+        return obj.starter;
+      });
+
+      expect(scoresForEachStarter).to.have.length(46);
+      cards.concat(nonStarters).forEach(function(missingCard) {
+        expect(startersConsidered).to.not.contain(missingCard);
+      });
+    });
+
+    it("should evaluate the scores correctly for each hand", function() {
+      var scoresForEachStarter = Hands.scoreForEachStarter(cards);
+      expect(scoresForEachStarter).to.have.length(48);
+      expect(scoresForEachStarter[0]).to.eql({ starter: AceOfClubs, score: 2 });
+    });
+  });
 });
