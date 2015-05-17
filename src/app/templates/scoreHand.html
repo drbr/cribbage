@@ -1,18 +1,18 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <cr:hand-score cards="hand.cards" starter="hand.starter"></cr:hand-score>
+    <cr:hand-score cards="cards" starter="starter"></cr:hand-score>
   </div>
 </div>
 
 <div class="panel panel-default">
   <div class="panel-heading">Select four cards:</div>
   <div class="panel-body">
-    <p ng-repeat="card in hand.cards">
-      <cr:card-selector card="hand.cards[$index]"></cr:card-selector>
+    <p ng-repeat="card in cards">
+      <cr:card-selector card="cards[$index]"></cr:card-selector>
     </p>
   </div>
   <div class="panel-heading">Select the starter:</div>
   <div class="panel-body">
-    <cr:card-selector card="hand.starter"></cr:card-selector>
+    <cr:card-selector card="starter"></cr:card-selector>
   </div>
 </div>

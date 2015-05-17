@@ -29,11 +29,9 @@ cribbageApp.controller('CribbageCtrl', function($scope) {
 });
 
 cribbageApp.controller('scoreHandCtrl', function($scope) {
-  $scope.hand = {
-    // The card selectors will populate these objects when a card is selected
-    cards: [{}, {}, {}, {}],
-    starter: {}
-  }
+  // These objects get populated by the card selectors
+  $scope.cards = [{}, {}, {}, {}];
+  $scope.starter = {};
 });
 
 cribbageApp.controller('evaluateDealCtrl', function($scope) {
