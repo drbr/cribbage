@@ -12,5 +12,6 @@
   load('src/logic/cards.js');
   load('src/logic/hands.js');
   load('src/logic/scoring.js');
+  load('src/logic/util.js');
 
 })();
