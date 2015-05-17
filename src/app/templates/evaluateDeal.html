@@ -1,10 +1,13 @@
 <div class="panel panel-default">
   <div class="panel-heading">Select six cards:</div>
   <div class="panel-body">
-    <p ng-repeat="card in hand.cards">
-      <cr:card-selector card="hand.cards[$index]"></cr:card-selector>
+    <p ng-repeat="card in cards">
+      <cr:card-selector
+        card="cards[$index].card"
+        set-card="setCard(newCard, $index)">
+      </cr:card-selector>
     </p>
   </div>
 </div>
 
-<cr:starter-scores cards="hand.cards" non-starters="hand.nonStarters"></cr:starter-scores>
+<cr:starter-scores score-breakdown="scoreBreakdown"></cr:starter-scores>

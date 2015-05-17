@@ -1,10 +1,14 @@
 var cribbageApp = angular.module('CribbageApp', [
   'ui.router',
   'crDirectives',
+  'crActivityControllers',
   'crFilters']);
 
 // The directives, each defined in its own file, are all under this module
 var crDirectives = angular.module('crDirectives', []);
+
+// The activity controllers, each defined in its own file, are all under this module
+var crActivityControllers = angular.module('crActivityControllers', [])
 
 var activityTabs = [
   { name: 'scoreHand', string: 'Score a hand', enabled: true },
@@ -26,19 +30,6 @@ cribbageApp.config(['$stateProvider', '$urlRouterProvider',
 
 cribbageApp.controller('CribbageCtrl', function($scope) {
   $scope.activityTabs = activityTabs;
-});
-
-cribbageApp.controller('scoreHandCtrl', function($scope) {
-  // These objects get populated by the card selectors
-  $scope.cards = [{}, {}, {}, {}];
-  $scope.starter = {};
-});
-
-cribbageApp.controller('evaluateDealCtrl', function($scope) {
-  $scope.hand = {
-    cards: [{}, {}, {}, {}],
-    nonStarters: []
-  }
 });
 
 // Access the cribbage logic through this service, to avoid global references

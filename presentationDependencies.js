@@ -20,6 +20,8 @@
 
   // The web app
   loadScript('src/app/angular/app.js');
+  loadScript('src/app/angular/controllers/scoreHandCtrl.js');
+  loadScript('src/app/angular/controllers/evaluateDealCtrl.js');
   loadScript('src/app/angular/directives/crCardSelector.js');
   loadScript('src/app/angular/directives/crHandScore.js');
   loadScript('src/app/angular/directives/crStarterScores.js');

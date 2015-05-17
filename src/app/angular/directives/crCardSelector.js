@@ -3,7 +3,8 @@ crDirectives.directive('crCardSelector',
   return {
     restrict: 'E',
     scope: {
-      card: '=' // A reference to the card being selected
+      card: '=',
+      setCard: '&' // should be bound to a method on the parent scope that stores the card's value
     },
     templateUrl: 'src/app/templates/crCardSelector.html',
     link: function(scope, element, attrs) {
@@ -26,11 +27,9 @@ crDirectives.directive('crCardSelector',
       function updateCard() {
         // The properties on the card must be set individually due to the dot problem
         if (logicProvider.cards.isValid({ suit: scope.suit, rank: scope.rank })) {
-          scope.card.suit = scope.suit;
-          scope.card.rank = scope.rank;
+          scope.setCard({ newCard: { suit: scope.suit, rank: scope.rank } });
         } else {
-          scope.card.suit = '';
-          scope.card.rank = '';
+          scope.setCard({ newCard: {} });
         }
       };
 
