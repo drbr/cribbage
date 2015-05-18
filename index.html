@@ -16,7 +16,7 @@
       <nav class="navbar">
       <h5>Choose an activity:</h5>
       <ul class="nav nav-tabs">
-        <li>&nbsp;&nbsp;&nbsp;</li>
+        <li>&nbsp;&nbsp;&nbsp;</li><!-- Indent the first tab -->
         <li ng-repeat="tab in activityTabs" ui-sref-active="active">
           <a ng-if="tab.enabled" ui-sref="{{tab.name}}">{{tab.string}}</a>
         </li>
@@ -27,6 +27,12 @@
 
     </div>
 
+    <footer>
+      <small>
+        &copy; 2015 Andrew Brandon.
+        <a href="http://www.github.com/drbr/cribbage">View the code</a>
+      </small>
+    </footer>
   </div>
 </body>
 </html>
