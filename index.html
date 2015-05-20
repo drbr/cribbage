@@ -3,6 +3,8 @@
 <head>
   <title>Cribbage Solver</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- Import the application code -->
   <script src="logicDependencies.js"></script>
   <script src="presentationDependencies.js"></script>
@@ -12,27 +14,26 @@
 
     <h1>Cribbage Solver!</h1>
 
-    <div class="container-fluid">
-      <nav class="navbar">
-      <h5>Choose an activity:</h5>
-      <ul class="nav nav-tabs">
-        <li>&nbsp;&nbsp;&nbsp;</li><!-- Indent the first tab -->
-        <li ng-repeat="tab in activityTabs" ui-sref-active="active">
-          <a ng-if="tab.enabled" ui-sref="{{tab.name}}">{{tab.string}}</a>
-        </li>
-      </ul>
-      </nav>
+    <nav class="navbar">
+    <h5>Choose an activity:</h5>
+    <ul class="nav nav-tabs">
+      <li>&nbsp;&nbsp;</li><!-- Indent the first tab -->
+      <li ng-repeat="tab in activityTabs" ui-sref-active="active">
+        <a ng-if="tab.enabled" ui-sref="{{tab.name}}">{{tab.string}}</a>
+      </li>
+    </ul>
+    </nav>
 
-      <div ui-view></div>
+    <div ui-view></div>
 
-    </div>
+  <div class="text-center">
+    <small>
+      &copy; 2015 Andrew Brandon<br/>
+      <a href="http://www.github.com/drbr/cribbage">View the code</a>
+    </small>
+  </footer>
 
-    <footer>
-      <small>
-        &copy; 2015 Andrew Brandon.
-        <a href="http://www.github.com/drbr/cribbage">View the code</a>
-      </small>
-    </footer>
   </div>
+
 </body>
 </html>
