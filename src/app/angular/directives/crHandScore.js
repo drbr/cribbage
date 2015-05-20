@@ -21,15 +21,11 @@ crDirectives.directive('crHandScore',
         if (duplicates.length === 0) {
           return '';
         } else {
-          var errorText = ['The hand may not contain duplicate cards: '];
-          duplicates.reduce(function(prevCard, curCard) {
-            if (prevCard != null) {
-              errorText.push(', ');
-            }
-            errorText.push(LogicProvider.cards.toString(curCard));
-            return curCard;
-          }, null);
-          return errorText.join('');
+          var errorText = 'The hand may not contain duplicate cards: ';
+          var duplicatesString = duplicates.map(function(card) {
+            return LogicProvider.cards.toString(card);
+          }).join(', ');
+          return errorText + duplicatesString;
         }
       };
 
