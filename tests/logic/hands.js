@@ -129,4 +129,10 @@ describe("Hands", function() {
       expect(scoresForEachStarter[0]).to.eql({ starter: AceOfClubs, score: 2 });
     });
   });
+
+  describe("scoreBreakdownsByHand", function() {
+    it("should have some tests", function() {
+      throw new Error("Write some tests for this!");
+    });
+  });
 });

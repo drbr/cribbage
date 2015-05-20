@@ -36,9 +36,9 @@ crDirectives.directive('crCardSelector',
       }
 
       function updateCard() {
-        // The properties on the card must be set individually due to the dot problem
-        if (logicProvider.cards.isValid({ suit: scope.suit, rank: scope.rank })) {
-          scope.setCard({ newCard: { suit: scope.suit, rank: scope.rank } });
+        var newCardObj = { suit: scope.suit, rank: scope.rank };
+        if (logicProvider.cards.isValid(newCardObj)) {
+          scope.setCard({ newCard: newCardObj });
         } else {
           scope.setCard({ newCard: {} });
         }

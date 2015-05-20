@@ -68,6 +68,10 @@ var Cards = (function(Cards) {
     return rankValues[cardA.rank].sort - rankValues[cardB.rank].sort;
   };
 
+  Cards.cardSuitComparator = function(cardA, cardB) {
+    return Cards.suitOrder.indexOf(cardA.suit) - Cards.suitOrder.indexOf(cardB.suit);
+  };
+
   Cards.getSortRank = function(card) {
     return rankValues[card.rank].sort || 0;
   };

@@ -1,5 +1,5 @@
 crDirectives.directive('crHandScore',
-    ['LogicProvider', function(LogicProvider) {
+    ['LogicProvider', 'UtilProvider', function(LogicProvider, UtilProvider) {
   return {
     restrict: 'E',
     scope: {
@@ -18,15 +18,8 @@ crDirectives.directive('crHandScore',
       scope.error = function() {
         // The only error we currently check for is duplicate cards in the hand
         var duplicates = LogicProvider.hands.findDuplicates(scope.cards.concat(scope.starter));
-        if (duplicates.length === 0) {
-          return '';
-        } else {
-          var errorText = 'The hand may not contain duplicate cards: ';
-          var duplicatesString = duplicates.map(function(card) {
-            return LogicProvider.cards.toString(card);
-          }).join(', ');
-          return errorText + duplicatesString;
-        }
+        return duplicates.length ?
+            UtilProvider.viewUtils.stringifyDuplicateCards(duplicates, LogicProvider.cards) : '';
       };
 
       scope.validHand = function() {

@@ -32,7 +32,11 @@ cribbageApp.controller('CribbageCtrl', function($scope) {
   $scope.activityTabs = activityTabs;
 });
 
-// Access the cribbage logic through this service, to avoid global references
+// Access the cribbage logic through these services, to avoid global references
 cribbageApp.factory('LogicProvider', function() {
   return { cards: Cards, hands: Hands, scoring: Scoring, util: Util };
+});
+
+cribbageApp.factory('UtilProvider', function() {
+  return { viewUtils: ViewUtils };
 });

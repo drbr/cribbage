@@ -26,6 +26,7 @@
   loadScript('src/app/angular/directives/crHandScore.js');
   loadScript('src/app/angular/directives/crStarterScores.js');
   loadScript('src/app/angular/filters.js');
+  loadScript('src/app/viewUtils.js');
 
   loadStylesheet('src/app/cribbage.css');
 })();
