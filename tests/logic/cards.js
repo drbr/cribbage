@@ -70,6 +70,10 @@ describe("Cards", function() {
       expect(Cards.suitSymbol(QueenOfSpades.suit)).to.equal('\u2660');
     });
 
+    it("suitSymbol should return the empty string for an undefined suit", function() {
+      expect(Cards.suitSymbol()).to.equal('');
+    });
+
     it("suitColor should return red for red cards", function() {
       expect(Cards.suitColor(SixOfDiamonds.suit)).to.equal('red');
       expect(Cards.suitColor(TwoOfHearts.suit)).to.equal('red');
@@ -78,6 +82,10 @@ describe("Cards", function() {
     it("suitColor should return black for black cards", function() {
       expect(Cards.suitColor(QueenOfSpades.suit)).to.equal('black');
       expect(Cards.suitColor(KingOfClubs.suit)).to.equal('black');
+    });
+
+    it("suitColor should return the empty string for an undefined suit", function() {
+      expect(Cards.suitColor()).to.equal('');
     });
 
     it("hash should concatenate the rank and suit", function() {

@@ -1,21 +1,55 @@
-.cr-card-name {
-    display: inline-block;
-    width: 135px;
-    margin: 6px;
-}
+/* Suit colors */
 
-.btn.cr-suit-btn {
-    padding: 0px;
-    font-size: 28px;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-}
-
-.btn.cr-suit-btn > .red {
+.cr-suit-color.red {
     color: red;
 }
 
-.btn.cr-suit-btn > .black {
+.cr-suit-color.black {
     color: black;
+}
+
+
+/* Card selector */
+
+.cr-card-selector .cr-card-name {
+    display: inline-block;
+    margin: 6px;
+}
+
+.cr-card-selector .cr-value-btn {
+    padding: 0px 6px;
+    font-size: 28px;
+    height: 40px;
+    min-width: 40px;
+    line-height: 40px;
+}
+
+.cr-card-selector .cr-dropdown-btn-selected {
+    padding: 0px 6px;
+    font-size: 28px;
+    height: 40px;
+    min-width: 56px; /* Largest that can fit on 320px display without wrapping */
+    line-height: 40px;
+}
+
+.cr-card-selector .cr-dropdown-btn-default {
+    padding: 0px 6px;
+    height: 40px;
+    min-width: 60px;
+    line-height: 40px;
+}
+
+
+.cr-card-selector .cr-dropdown-content {
+    min-width: 171px; /* Enough for four tiles */
+    padding: 6px;
+    text-align: left;
+}
+
+.cr-card-selector .cr-dropdown-content .btn-group + .btn-group {
+    margin-top: 6px;
+}
+
+.cr-card-selector .cr-dropdown-wide {
+    width: 216px; /* Enough for five tiles */
 }

@@ -1,11 +1,48 @@
-<div class="btn-group" role="group" aria-label="Suit">
-  <div ng-repeat="s in suitOrder" ng-click="setSuit(s)" class="btn btn-default cr-suit-btn"
-    ng-class="{active: suit == s}"><span ng-class="suitColor(s)">{{ suitSymbol(s) }}</span></div>
+<!-- Dropdown-based selector for small screens -->
+<div class="cr-card-selector visible-xs-inline visible-sm-inline">
+  <span class="dropdown">
+    <div class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
+        ng-class="suit ? 'cr-dropdown-btn-selected' : 'cr-dropdown-btn-default'">
+      <span class="cr-suit-color" ng-class="suitColor(suit)">
+        {{ suitSymbol(suit) || 'Suit' }}&nbsp;</span><span class="caret"></span>
+    </div>
+    <div class="dropdown-menu cr-dropdown-content" role="menu">
+      <div class="btn-group" role="group" aria-label="Suit">
+        <div ng-repeat="s in suitOrder" ng-click="setSuit(s)" class="btn btn-default cr-value-btn"
+          ng-class="{active: suit === s}">
+          <span class="cr-suit-color" ng-class="suitColor(s)">{{ suitSymbol(s) }}</span>
+        </div>
+      </div>
+    </div>
+  </span>
+
+  <span class="dropdown">
+    <div class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
+        ng-class="rank ? 'cr-dropdown-btn-selected' : 'cr-dropdown-btn-default'">
+      {{ rank || 'Rank' }}&nbsp;<span class="caret"></span>
+    </div>
+    <div class="dropdown-menu cr-dropdown-content cr-dropdown-wide" role="menu">
+      <div class="btn-group" role="group" aria-label="Rank" ng-repeat="chunk in rankOrderChunks">
+        <div ng-repeat="r in chunk" ng-click="setRank(r)" class="btn btn-default cr-value-btn"
+          ng-class="{active: rank === r}">{{ r }}</div>
+      </div>
+    </div>
+  </span>
 </div>
 
-<div class="btn-group" role="group" aria-label="Rank">
-  <div ng-repeat="r in rankOrder" ng-click="setRank(r)" class="btn btn-default cr-suit-btn"
-    ng-class="{active: rank == r}">{{ r }}</div>
+<!-- Button-based selector for large screens -->
+<div class="cr-card-selector visible-md-inline">
+  <div class="btn-group" role="group" aria-label="Suit">
+    <div ng-repeat="s in suitOrder" ng-click="setSuit(s)" class="btn btn-default cr-value-btn"
+      ng-class="{active: suit === s}">
+      <span class="cr-suit-color" ng-class="suitColor(s)">{{ suitSymbol(s) }}</span>
+    </div>
+  </div>
+
+  <div class="btn-group" role="group" aria-label="Rank">
+    <div ng-repeat="r in rankOrder" ng-click="setRank(r)" class="btn btn-default cr-value-btn"
+      ng-class="{active: rank === r}">{{ r }}</div>
+  </div>
 </div>
 
-<span class="cr-card-name">{{ card | cardToString }}</span>
+<span class="cr-card-name">&nbsp;{{ card | cardToString }}</span>

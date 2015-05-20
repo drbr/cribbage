@@ -31,11 +31,11 @@ var Cards = (function(Cards) {
   Cards.suitOrder = ['C', 'S', 'H', 'D'];
 
   Cards.suitSymbol = function(suit) {
-    return suitValues[suit].symbol;
+    return suitValues[suit] && suitValues[suit].symbol || '';
   };
 
   Cards.suitColor = function(suit) {
-    return suitValues[suit].color;
+    return suitValues[suit] && suitValues[suit].color || '';
   };
 
   Cards.toString = function(card) {
@@ -60,8 +60,8 @@ var Cards = (function(Cards) {
   };
 
   Cards.isValid = function(card) {
-    if (!card) return false;
-    return (rankValues[card.rank] && suitValues[card.suit]) ? true : false;
+    // Explicitly cast the result to a boolean
+    return (card && rankValues[card.rank] && suitValues[card.suit]) ? true : false;
   };
 
   Cards.cardRankComparator = function(cardA, cardB) {
@@ -69,11 +69,11 @@ var Cards = (function(Cards) {
   };
 
   Cards.getSortRank = function(card) {
-    return rankValues[card.rank].sort;
+    return rankValues[card.rank].sort || 0;
   };
 
   Cards.getPointRank = function(card) {
-    return rankValues[card.rank].points;
+    return rankValues[card.rank].points || 0;
   };
 
   return Cards;

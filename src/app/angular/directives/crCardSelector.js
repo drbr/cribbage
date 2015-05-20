@@ -14,6 +14,17 @@ crDirectives.directive('crCardSelector',
       scope.suitColor = logicProvider.cards.suitColor;
       scope.rankOrder = logicProvider.cards.rankOrder;
 
+      // The chunked rank order is used in the dropdown version of the selector,
+      // to display the possible ranks on multiple rows, each with chunkSize elements.
+      var chunkSize = 5;
+      scope.rankOrderChunks = function() {
+        var chunks = [];
+        for (var i = 0; i < logicProvider.cards.rankOrder.length; i += chunkSize) {
+          chunks.push(logicProvider.cards.rankOrder.slice(i, i + chunkSize));
+        }
+        return chunks;
+      }();
+
       scope.setSuit = function(suit) {
         scope.suit = suit;
         updateCard();
