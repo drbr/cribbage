@@ -10,4 +10,16 @@
   </div>
 </div>
 
-<cr:starter-scores score-breakdown="scoreBreakdown"></cr:starter-scores>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 panel panel-default">
+    <div class="panel-body" ng-class="prompt && prompt.classes">
+      {{ prompt && prompt.prompt }}
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 panel panel-default">
+    <div class="panel-body">
+      <cr:starter-scores score-breakdown="scoreBreakdown"></cr:starter-scores>
+    </div>
+  </div>
+</div>

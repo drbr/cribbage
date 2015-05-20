@@ -1,1 +1,16 @@
-<p>{{ scoreBreakdown }}</p>
+<div ng-if="scoreBreakdown && scoreBreakdown.length">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Card</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in tableRows">
+        <td ng-bind-html="row.cards | cardToSymbolWithColor"></td>
+        <td>{{ row.score }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
