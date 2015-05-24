@@ -7,18 +7,6 @@ crActivityControllers.controller('evaluateDealCtrl',
   });
   $scope.cardsUnwrapped = [{}, {}, {}, {}, {}, {}];
 
-  // TODO: Temporary code to easily test
-  var TwoOfDiamonds = { rank: "2", suit: "D" };
-  var ThreeOfSpades = { rank: "3", suit: "S" };
-  var FiveOfClubs = { rank: "5", suit: "C" };
-  var FiveOfHearts = { rank: "5", suit: "H" };
-  var FiveOfSpades = { rank: "5", suit: "S" };
-  var FiveOfDiamonds = { rank: "5", suit: "D" };
-  $scope.cardsUnwrapped = [TwoOfDiamonds, ThreeOfSpades, FiveOfClubs, FiveOfHearts, FiveOfSpades, FiveOfDiamonds];
-  $scope.cards = $scope.cardsUnwrapped.map(function(card) {
-    return { card: card };
-  });
-
   $scope.setCard = function(newCard, index) {
     $scope.cards[index].card = newCard;
     $scope.cardsUnwrapped[index] = newCard;
@@ -44,15 +32,16 @@ crActivityControllers.controller('evaluateDealCtrl',
     return false;
   };
 
+  $scope.chooseHand = function($index) {
+    $scope.currentHandIndex = $index;
+    $scope.scoreBreakdown = $scope.breakdownsPerHand[$index].scoreBreakdownByStarter;
+  }
+
   $scope.$watch('cards', function() {
-    var cardsSelectedCorrectly = !setPromptForErrors();
-
-    if (cardsSelectedCorrectly) {
+    if (!setPromptForErrors()) {
       $scope.breakdownsPerHand = LogicProvider.hands.scoreBreakdownsPerHand($scope.cardsUnwrapped);
-
-      // TODO: Use the first one until the breakdown selector is built
-      var breakdownObj = $scope.breakdownsPerHand[0];
-      $scope.scoreBreakdown = breakdownObj.scoreBreakdownByStarter;
+    } else {
+      $scope.breakdownsPerHand = null;
     }
   }, true);
 
