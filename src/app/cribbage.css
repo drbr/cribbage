@@ -53,3 +53,10 @@
 .cr-card-selector .cr-dropdown-wide {
     width: 216px; /* Enough for five tiles */
 }
+
+
+/* Miscellaneous */
+
+.table.cr-margin-zero {
+    margin: 0;
+}
