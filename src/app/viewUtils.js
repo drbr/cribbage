@@ -1,14 +1,11 @@
 var ViewUtils = (function(ViewUtils) {
 
-  ViewUtils.stringifyDuplicateCards = function(duplicates, Cards) {
+  ViewUtils.stringifyDuplicateCards = function(duplicates, Cards, cardToStringFilter) {
     var errorText = 'The hand may not contain duplicate cards: ';
-    var duplicatesString = duplicates.map(function(card) {
-      return Cards.toString(card);
-    }).join(', ');
-    return errorText + duplicatesString;
+    return errorText + cardToStringFilter(duplicates);
   };
 
-  ViewUtils.convertScoreBreakdownToTableRows = function(breakdownObj, Cards) {
+  ViewUtils.convertScoreBreakdownToTableRowsSortedByCard = function(breakdownObj, Cards) {
     // Sort by card rank and then by score, to make sure all the suits with the same score
     // are adjacent before the object is broken up
     var starterScores = breakdownObj.sort(function(a, b) {
@@ -35,6 +32,25 @@ var ViewUtils = (function(ViewUtils) {
     }
     if (rowObj) tableRows.push(rowObj);
     return tableRows;
+  };
+
+  ViewUtils.convertScoreBreakdownToTableRowsSortedByScore = function(breakdownObj, Cards) {
+    var scoreStarters = _.groupBy(breakdownObj, function(obj) { return obj.score; });
+    var tableRows = [];
+    _.values(scoreStarters).forEach(function(starterScoreArray) {
+      var rowObj = {
+        cards: _.pluck(starterScoreArray, 'starter'),
+        score: starterScoreArray[0].score
+      };
+      tableRows.push(rowObj);
+    });
+    return _.sortBy(tableRows, 'score').reverse();
+  };
+
+  ViewUtils.chunkCardArrayByRank = function(cardArray, Cards) {
+    var cardsByRank = _.groupBy(cardArray, function(card) { return card.rank; });
+    var sortedRanks = _.keys(cardsByRank).sort(Cards.cardRankComparatorFromRank);
+    return sortedRanks.map(function(rank) { return cardsByRank[rank].sort(Cards.cardSuitComparator); });
   };
 
   return ViewUtils;

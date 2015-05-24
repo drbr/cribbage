@@ -24,7 +24,7 @@
   <div class="col-xs-12 col-sm-6">
     <div class="panel panel-default">
       <div class="panel-body">
-        <table class="table table-striped table-hover cr-margin-zero">
+        <table class="table table-hover cr-results-table">
           <thead>
             <tr>
               <th>Hand</th>
@@ -33,9 +33,9 @@
           </thead>
           <tbody>
             <tr ng-repeat="row in breakdownsPerHand" ng-click="chooseHand($index)"
-                ng-class="{ 'active': currentHandIndex == $index }">
-              <td ng-bind-html="row.fourCards | cardToSymbolWithColor"></td>
-              <td>{{ row.expectedScore }}</td>
+                ng-class="{ 'info': currentHandIndex === $index }">
+              <td ng-bind-html="row.fourCards | cardToSymbol"></td>
+              <td>{{ row.expectedScore | number : 2 }}</td>
             </tr>
           </tbody>
         </table>

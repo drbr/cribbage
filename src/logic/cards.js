@@ -68,8 +68,20 @@ var Cards = (function(Cards) {
     return rankValues[cardA.rank].sort - rankValues[cardB.rank].sort;
   };
 
+  Cards.cardRankComparatorFromRank = function(rankA, rankB) {
+    return rankValues[rankA].sort - rankValues[rankB].sort;
+  };
+
   Cards.cardSuitComparator = function(cardA, cardB) {
     return Cards.suitOrder.indexOf(cardA.suit) - Cards.suitOrder.indexOf(cardB.suit);
+  };
+
+  Cards.cardComparator = function(cardA, cardB) {
+    if (cardA.rank !== cardB.rank) {
+      return Cards.cardRankComparator(cardA, cardB);
+    } else {
+      return Cards.cardSuitComparator(cardA, cardB);
+    }
   };
 
   Cards.getSortRank = function(card) {

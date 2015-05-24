@@ -10,7 +10,7 @@ crDirectives.directive('crStarterScores',
       scope.$watch('scoreBreakdown', function() {
         if (scope.scoreBreakdown && scope.scoreBreakdown.length) {
           scope.tableRows = UtilProvider.viewUtils.
-            convertScoreBreakdownToTableRows(scope.scoreBreakdown, LogicProvider.cards);
+            convertScoreBreakdownToTableRowsSortedByScore(scope.scoreBreakdown, LogicProvider.cards);
         }
       });
     }

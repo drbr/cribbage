@@ -1,5 +1,6 @@
 crActivityControllers.controller('evaluateDealCtrl',
-    ['LogicProvider', 'UtilProvider', '$scope', function(LogicProvider, UtilProvider, $scope) {
+    ['LogicProvider', 'UtilProvider', 'cardToStringFilter', '$scope',
+    function(LogicProvider, UtilProvider, cardToStringFilter, $scope) {
   // These objects get populated by the card selectors
   // The card is wrapped in an object to avoid the isolate scope "dot problem".
   $scope.cards = Array.apply(null, new Array(6)).map(function() {
@@ -15,7 +16,8 @@ crActivityControllers.controller('evaluateDealCtrl',
   function setPromptForErrors() {
     var duplicatesArray = LogicProvider.hands.findDuplicates($scope.cardsUnwrapped);
     if (duplicatesArray.length > 0) {
-      var prompt = UtilProvider.viewUtils.stringifyDuplicateCards(duplicatesArray, LogicProvider.cards);
+      var prompt = UtilProvider.viewUtils.stringifyDuplicateCards(
+        duplicatesArray, LogicProvider.cards, cardToStringFilter);
       $scope.prompt = { prompt: prompt, classes: 'text-danger' };
       return true;
     }
@@ -24,7 +26,7 @@ crActivityControllers.controller('evaluateDealCtrl',
       return LogicProvider.cards.isValid(card);
     });
     if (!validCardSet) {
-      $scope.prompt = { prompt: 'Select cards first!', classes: 'text-warning' };
+      $scope.prompt = { prompt: 'Select six cards to see the score breakdown.', classes: 'text-warning' };
       return true;
     }
 
@@ -43,6 +45,8 @@ crActivityControllers.controller('evaluateDealCtrl',
     } else {
       $scope.breakdownsPerHand = null;
     }
+    $scope.scoreBreakdown = null;
+    $scope.currentHandIndex = null;
   }, true);
 
 }]);

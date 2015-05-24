@@ -1,5 +1,9 @@
+<div ng-if="!scoreBreakdown || !scoreBreakdown.length" class="text-warning">
+  Select a hand to see the score breakdown.
+</div>
+
 <div ng-if="scoreBreakdown && scoreBreakdown.length">
-  <table class="table table-striped cr-margin-zero">
+  <table class="table table-striped cr-results-table">
     <thead>
       <tr>
         <th>Card</th>
@@ -8,7 +12,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="row in tableRows">
-        <td ng-bind-html="row.cards | cardToSymbolWithColor"></td>
+        <td ng-bind-html="row.cards | cardToSymbol : true"></td>
         <td>{{ row.score }}</td>
       </tr>
     </tbody>
