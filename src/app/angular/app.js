@@ -12,7 +12,7 @@ var crActivityControllers = angular.module('crActivityControllers', [])
 
 var activityTabs = [
   { name: 'scoreHand', string: 'Score a hand', enabled: true },
-  { name: 'evaluateDeal', string: 'Evaluate dealt cards', enabled: false }
+  { name: 'evaluateDeal', string: 'Evaluate dealt cards', enabled: true }
 ];
 
 cribbageApp.config(['$stateProvider', '$urlRouterProvider',
