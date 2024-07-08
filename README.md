@@ -4,6 +4,8 @@ While I was playing Cribbage one night, I realized that there's a lot of strateg
 
 The cribbage solver is hosted on GitHub Pages: [https://drbr.github.io/cribbage](https://drbr.github.io/cribbage)
 
+Shortly before building this app, I started a new job that used AngularJS, so I wrote this app in AngularJS to become more comfortable with the framework.
+
 ## Background
 
 At the beginning of each hand, each player is dealt six cards. The player must choose four of these cards to keep in their hand, and two to put into the crib. The *crib* is an additional four-card hand that is owned by the dealer for that specific turn. At the end of each turn, each player scores their hand, which is composed of their four cards plus a fifth random card (the *starter*) turned up from the top of the deck. The scoring is a straightforward combinatorial algorithm, which this program implements.
